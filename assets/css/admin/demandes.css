@@ -1,0 +1,218 @@
+/* Styles spécifiques à la gestion des demandes de rédaction */
+
+/* Filtres rapides */
+.filter-badges {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--light-color);
+}
+
+.filter-badge:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.filter-badge.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.filter-badge .count {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
+}
+
+/* Liste des demandes */
+.demande-card {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.demande-card:hover {
+    transform: translateY(-2px);
+}
+
+.demande-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.demande-id {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+}
+
+.demande-status {
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.status-new {
+    background: var(--info-color);
+    color: white;
+}
+
+.status-in-progress {
+    background: var(--warning-color);
+    color: white;
+}
+
+.status-completed {
+    background: var(--success-color);
+    color: white;
+}
+
+.status-cancelled {
+    background: var(--danger-color);
+    color: white;
+}
+
+.demande-content {
+    margin-bottom: 1rem;
+}
+
+.demande-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.demande-description {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.demande-meta {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+}
+
+.demande-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.demande-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--light-color);
+}
+
+.demande-client {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.client-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.client-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.client-info {
+    font-size: 0.875rem;
+}
+
+.client-name {
+    font-weight: 500;
+}
+
+.client-email {
+    color: var(--secondary-color);
+}
+
+/* Timeline de la demande */
+.demande-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 0;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 2px solid white;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: -1.6rem;
+    top: 1rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--light-color);
+}
+
+.timeline-item:last-child::after {
+    display: none;
+}
+
+.timeline-content {
+    background: var(--light-color);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+}
+
+.timeline-date {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .demande-meta {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .demande-footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+} 

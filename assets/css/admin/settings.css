@@ -1,0 +1,296 @@
+/* Styles pour la page des paramètres */
+
+/* Navigation des onglets */
+.nav-tabs {
+    border-bottom: 2px solid var(--white-80);
+}
+
+.nav-tabs .nav-link {
+    color: var(--dark-70);
+    border: none;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--primary-blue);
+    background: var(--white-90);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-blue);
+    background: none;
+    border: none;
+}
+
+.nav-tabs .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-blue);
+}
+
+/* Cards des paramètres */
+.settings-card {
+    background: var(--white-100);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1.5rem;
+}
+
+.settings-card .card-body {
+    padding: 2rem;
+}
+
+.settings-card .card-title {
+    color: var(--dark-100);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* Form controls */
+.settings-form .form-label {
+    font-weight: 500;
+    color: var(--dark-80);
+    margin-bottom: 0.5rem;
+}
+
+.settings-form .form-control,
+.settings-form .form-select {
+    border-color: var(--white-70);
+    padding: 0.75rem 1rem;
+}
+
+.settings-form .form-control:focus,
+.settings-form .form-select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.2rem rgba(0, 82, 204, 0.15);
+}
+
+/* Switch toggle */
+.form-switch .form-check-input {
+    width: 3rem;
+    height: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.form-switch .form-check-input:checked {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+/* Checkboxes */
+.form-check-input:checked {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+/* Boutons d'action */
+.settings-actions {
+    padding: 1rem;
+    background: var(--white-90);
+    border-top: 1px solid var(--white-70);
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+    .nav-tabs {
+        border-bottom-color: var(--dark-80);
+    }
+
+    .nav-tabs .nav-link {
+        color: var(--white-70);
+    }
+
+    .nav-tabs .nav-link:hover {
+        color: var(--blue-light);
+        background: var(--dark-90);
+    }
+
+    .nav-tabs .nav-link.active {
+        color: var(--blue-light);
+    }
+
+    .nav-tabs .nav-link.active::after {
+        background: var(--blue-light);
+    }
+
+    .settings-card {
+        background: var(--dark-90);
+    }
+
+    .settings-card .card-title {
+        color: var(--white-90);
+    }
+
+    .settings-form .form-label {
+        color: var(--white-80);
+    }
+
+    .settings-form .form-control,
+    .settings-form .form-select {
+        background-color: var(--dark-80);
+        border-color: var(--dark-70);
+        color: var(--white-90);
+    }
+
+    .settings-form .form-control:focus,
+    .settings-form .form-select:focus {
+        border-color: var(--blue-light);
+        box-shadow: 0 0 0 0.2rem rgba(76, 154, 255, 0.15);
+    }
+
+    .settings-actions {
+        background: var(--dark-90);
+        border-top-color: var(--dark-80);
+    }
+}
+
+/* Animations */
+.tab-pane {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styles spécifiques aux paramètres */
+
+/* Navigation des onglets */
+.settings-tabs {
+    border-bottom: 2px solid var(--light-color);
+    margin-bottom: 2rem;
+}
+
+.settings-tabs .nav-link {
+    padding: 1rem 1.5rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+    border: none;
+    position: relative;
+}
+
+.settings-tabs .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.settings-tabs .nav-link:hover {
+    color: var(--primary-color);
+}
+
+.settings-tabs .nav-link.active {
+    color: var(--primary-color);
+    background: none;
+}
+
+.settings-tabs .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+/* Sections de paramètres */
+.settings-section {
+    margin-bottom: 3rem;
+}
+
+.settings-section:last-child {
+    margin-bottom: 0;
+}
+
+.settings-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--light-color);
+}
+
+/* Formulaires */
+.settings-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.settings-form .form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.settings-form .form-text {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+    margin-top: 0.25rem;
+}
+
+/* Switches */
+.settings-switch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+}
+
+.switch-label {
+    font-weight: 500;
+}
+
+.switch-description {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+    margin-top: 0.25rem;
+}
+
+/* Actions */
+.settings-actions {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding: 1rem 0;
+    border-top: 1px solid var(--light-color);
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .settings-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .settings-switch {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+} 

@@ -1,0 +1,111 @@
+/* Styles spécifiques à la gestion des catégories */
+
+/* Liste des catégories */
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.category-card {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.category-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.category-info {
+    flex: 1;
+}
+
+.category-name {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.category-count {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+}
+
+/* Modal */
+.color-preview {
+    width: 100%;
+    height: 40px;
+    border-radius: var(--border-radius);
+    margin-top: 0.5rem;
+}
+
+.icon-select {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.icon-option {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.icon-option:hover {
+    background: var(--light-color);
+}
+
+.icon-option.selected {
+    border-color: var(--primary-color);
+    background: var(--light-color);
+}
+
+/* Stats */
+.category-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--secondary-color);
+    font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .category-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .category-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-stats {
+        grid-template-columns: 1fr;
+    }
+} 

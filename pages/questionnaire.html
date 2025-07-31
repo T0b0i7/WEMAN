@@ -1,0 +1,310 @@
+<?php
+session_start();
+require_once '../config/connexion.php';
+require_once 'protect-source.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpg" href="../assets/images/WEMANTCHE LOGO p 2.png">
+    <title>Questionnaire - WEMANTCHE</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: url('../assets/images/studio-shot-dark-skinned-serious-confident-college-student-carries-many-books-pile-wears-glasses-shirt-returns-from-library.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animation des emojis */
+        #emojiRain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: fall 8s linear infinite;
+            z-index: 1;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .questionnaire-card {
+            border-radius: 15px;
+            overflow: visible;
+            position: relative;
+            z-index: 2;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 75px;
+        }
+
+        .card-body {
+            padding: 2rem;
+            padding-top: 4rem;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .profile-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: white;
+            transition: all 0.3s ease;
+            position: absolute;
+            top: -50px;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn-primary {
+            background-color: #0066cc;
+            border-color: #0066cc;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .text-blue {
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animation des emojis -->
+    <div id="emojiRain"></div>
+
+    <!-- Contenu principal -->
+    <div class="container my-auto">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="questionnaire-card card shadow-lg border-0">
+                    <div class="profile-container">
+                        <div class="profile-circle">
+                            <img src="../assets/images/WEMANTCHE LOGO p 2.png" alt="Éducation">
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold">Questionnaire</h2>
+                            <p class="text-muted">Veuillez répondre aux questions suivantes</p>
+                        </div>
+                        
+                        <form id="questionnaireForm" action="questionnaire.php" method="POST">
+                            <input type="hidden" name="utilisateur_id" id="utilisateur_id">
+                            <!-- Question 1 -->
+                            <div class="mb-3">
+                                <label for="question1" class="form-label">1. Quelle couleur préférez-vous ?</label>
+                                <select class="form-select" id="question1" name="question1" required>
+                                    <option value="">Sélectionnez une option</option>
+                                    <option value="rouge">Rouge</option>
+                                    <option value="bleu">Bleu</option>
+                                    <option value="vert">Vert</option>
+                                    <option value="jaune">Jaune</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+
+                            <!-- Question 2 -->
+                            <div class="mb-3">
+                                <label for="question2" class="form-label">2. Quel animal préférez-vous ?</label>
+                                <select class="form-select" id="question2" name="question2" required>
+                                    <option value="">Sélectionnez une option</option>
+                                    <option value="chien">Chien</option>
+                                    <option value="chat">Chat</option>
+                                    <option value="oiseau">Oiseau</option>
+                                    <option value="poisson">Poisson</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+
+                            <!-- Question 3 -->
+                            <div class="mb-3">
+                                <label for="question3" class="form-label">3. Quelle saison préférez-vous ?</label>
+                                <select class="form-select" id="question3" name="question3" required>
+                                    <option value="">Sélectionnez une option</option>
+                                    <option value="printemps">Printemps</option>
+                                    <option value="été">Été</option>
+                                    <option value="automne">Automne</option>
+                                    <option value="hiver">Hiver</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+
+                            <!-- Question 4 -->
+                            <div class="mb-3">
+                                <label for="question4" class="form-label">4. Quel plat préférez-vous ?</label>
+                                <select class="form-select" id="question4" name="question4" required>
+                                    <option value="">Sélectionnez une option</option>
+                                    <option value="pizza">Pizza</option>
+                                    <option value="pâtes">Pâtes</option>
+                                    <option value="sushi">Sushi</option>
+                                    <option value="salade">Salade</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+
+                            <!-- Question 5 -->
+                            <div class="mb-3">
+                                <label for="question5" class="form-label">5. Quel passe-temps préférez-vous ?</label>
+                                <select class="form-select" id="question5" name="question5" required>
+                                    <option value="">Sélectionnez une option</option>
+                                    <option value="lecture">Lecture</option>
+                                    <option value="sport">Sport</option>
+                                    <option value="voyage">Voyage</option>
+                                    <option value="musique">Musique</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    Soumettre
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Animation des emojis qui tombent
+        const emojis = ['📚', '🎓', '✏️', '🏫', '🧑‍🎓', '📝', '👨‍🏫', '⚛️', '🧪', '🧮', '🌍', '🔬', '💡', '🏆', '📖'];
+        
+        function createFallingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'emoji';
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = `${5 + Math.random() * 90}vw`;
+            emoji.style.animationDuration = `${5 + Math.random() * 5}s`;
+            emoji.style.animationDelay = `${Math.random() * 2}s`;
+            emoji.style.fontSize = `${1 + Math.random() * 2}rem`;
+            document.getElementById('emojiRain').appendChild(emoji);
+            setTimeout(() => emoji.remove(), 10000);
+        }
+        
+        let emojiInterval;
+        function startEmojiAnimation() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createFallingEmoji, i * 200);
+            }
+            return setInterval(createFallingEmoji, 400);
+        }
+        
+        // Démarrer l'animation
+        document.addEventListener('DOMContentLoaded', () => {
+            emojiInterval = startEmojiAnimation();
+            
+            // Récupérer l'ID de l'utilisateur depuis l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const utilisateur_id = urlParams.get('utilisateur_id');
+            document.getElementById('utilisateur_id').value = utilisateur_id;
+        });
+        
+        // Optimiser les performances
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                clearInterval(emojiInterval);
+            } else {
+                emojiInterval = startEmojiAnimation();
+            }
+        });
+
+        // Gestion du formulaire
+        document.getElementById('questionnaireForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            fetch('questionnaire.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Merci',
+                        text: 'Vos réponses ont été bien enregistrées.',
+                        showConfirmButton: false,
+                        timer: 3000
+                    }).then(() => {
+                        window.location.href = 'login.php';
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur',
+                        text: data.message
+                    });
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erreur',
+                    text: 'Une erreur est survenue. Veuillez réessayer.'
+                });
+                console.error('Erreur:', error);
+            });
+        });
+    </script>
+</body>
+</html>

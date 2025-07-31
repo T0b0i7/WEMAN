@@ -1,0 +1,10 @@
+{
+    "require": {
+        "tecnickcom/tcpdf": "^6.6",
+        "fedapay/fedapay-php": "^0.4.5",
+        "smalot/pdfparser": "^2.11",
+        "phpoffice/phpword": "^1.3",
+        "phpoffice/phpspreadsheet": "^4.1",
+        "phpoffice/phppresentation": "^0.9.0"
+    }
+}
